@@ -56,7 +56,8 @@ const db = mysql.createConnection(
     },
     console.log(`Connected to the employee_db database.`)
   );
-function viewEmployees() {
+
+  function viewEmployees() {
     db.query(`SELECT employee.id, employee.first_name, employee.last_name, employee.role_id`, (err, result) => {
         if (err) {
           console.log(err);
@@ -66,32 +67,66 @@ function viewEmployees() {
 }
 
 function addEmployee() {
-    db.query(`SELECT employee.id, employee.first_name, employee.last_name, employee.role_id`, (err, result) => {
-        if (err) {
-          console.log(err);
-        }
-        console.log(result);
-      });   
+   inquirer.prompt ([
+    {
+        name: 'firstname',
+        type: 'input',
+        message: "Employee's first name?" 
+    },
+    {
+        name: 'lastname',
+        type: 'input',
+        message: "Employee's last name?"
+    },
+    {
+        name: 'role',
+        type: 'list',
+        message: "Employee's role?",
+        choices: 
+        [
+            'Sales Lead',
+            'Sales Person',
+            'Lead Engineer',
+            'Software Engineer',
+            'Account Manager',
+            'Accountant',
+            'Legal Team Lead',
+            'Lawyer'
+            
+        ]
+    },
+    {
+        name: 'manager',
+        type: 'input',
+        message: "Employee's manager?"
+    }
+   ])   
 }
 
 function updateEmployee() {
-    db.query(`SELECT employee.id, employee.first_name, employee.last_name, employee.role_id`, (err, result) => {
+    db.query(`SELECT FROM employee`, (err, result) => {
         if (err) {
           console.log(err);
         }
-        console.log(result);
-      });   
+        inquirer.prompt ([
+        {
+            name: 'pick employee',
+            type: 'list',
+            message: "Which Employee is being update?"
+        }
+        ])
+      });    
 }
 function viewRoles() {
-    db.query(`SELECT employee.id, employee.first_name, employee.last_name, employee.role_id`, (err, result) => {
+    db.query(`SELECT role.id, role.title, role.salary, role.department_id`, (err, result) => {
         if (err) {
           console.log(err);
         }
         console.log(result);
-      });   
+      });      
 }
 function viewDepartments() {
-    db.query(`SELECT employee.id, employee.first_name, employee.last_name, employee.role_id`, (err, result) => {
+    db.query(`SELECT department_id, department.name`, (err, result) => {
         if (err) {
           console.log(err);
         }
@@ -100,11 +135,17 @@ function viewDepartments() {
 }
 
 function addDepartments() {
-    db.query(`SELECT employee.id, employee.first_name, employee.last_name, employee.role_id`, (err, result) => {
-        if (err) {
-          console.log(err);
+    inquirer.prompt ([
+        {
+            name: 'department id',
+            type: 'input',
+            message: "New department id?"
+        },
+        {
+            name: 'department name',
+            type: 'input',
+            message: 'New department name?'
         }
-        console.log(result);
-      });   
+    ])   
 }
 
