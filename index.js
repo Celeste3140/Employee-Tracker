@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
 const cTable = require('console.table');
+const Connection = require('mysql2/typings/mysql/lib/Connection');
 
 function questions() {
 inquirer.prompt ({
@@ -14,7 +15,8 @@ inquirer.prompt ({
         'Update Employee Role',
         'View All Roles',
         'View All Departments',
-        'Add Department'
+        'Add Department',
+        'Exit'
     ]
 })
 
@@ -38,12 +40,71 @@ inquirer.prompt ({
     else if(answers.choice === 'Add Department') {
         addDepartments();
     }
+    else if(answers.choice === 'Exit') {
+        connection.end();
+        console.log('Bye!');
+    }
 })
-.catch((error) => {
-  if (error.isTtyError) {
-
-  } else {
-    
-  }
-});
 }
+
+const db = mysql.createConnection(
+    {
+      host: 'localhost',
+      user: 'root',
+      password: 'LeviButters24',
+      database: 'employee_db'
+    },
+    console.log(`Connected to the employee_db database.`)
+  );
+function viewEmployees() {
+    db.query(`SELECT employee.id, employee.first_name, employee.last_name, employee.role_id`, (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        console.log(result);
+      });   
+}
+
+function addEmployee() {
+    db.query(`SELECT employee.id, employee.first_name, employee.last_name, employee.role_id`, (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        console.log(result);
+      });   
+}
+
+function updateEmployee() {
+    db.query(`SELECT employee.id, employee.first_name, employee.last_name, employee.role_id`, (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        console.log(result);
+      });   
+}
+function viewRoles() {
+    db.query(`SELECT employee.id, employee.first_name, employee.last_name, employee.role_id`, (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        console.log(result);
+      });   
+}
+function viewDepartments() {
+    db.query(`SELECT employee.id, employee.first_name, employee.last_name, employee.role_id`, (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        console.log(result);
+      });   
+}
+
+function addDepartments() {
+    db.query(`SELECT employee.id, employee.first_name, employee.last_name, employee.role_id`, (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        console.log(result);
+      });   
+}
+
