@@ -1,7 +1,14 @@
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
 const cTable = require('console.table');
-const Connection = require('mysql2/typings/mysql/lib/Connection');
+
+const connection = mysql.createConnection({
+    host: 'localhost',
+    port: 3001,
+    user: 'root',
+    password: 'LeviButters24',
+    database: 'employee_db'
+})
 
 function questions() {
 inquirer.prompt ({
