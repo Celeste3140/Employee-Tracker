@@ -11,3 +11,7 @@ SO THAT I can organize and plan my business
 ## How to use
 
 Navigate to one computer's terminal and run "node app.js". From there one will be able to access the database and be able to see employee's current information, add, delete or update an emolyee's information. 
+
+## Walkthrough Video
+
+https://drive.google.com/file/d/1LSKlJqDxyx8TINUOVIDJHrbFMrqSx0or/view
