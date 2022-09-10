@@ -13,5 +13,6 @@ SO THAT I can organize and plan my business
 Navigate to one computer's terminal and run "node app.js". From there one will be able to access the database and be able to see employee's current information, add, delete or update an emolyee's information. 
 
 ## Walkthrough Video
-
 https://drive.google.com/file/d/1LSKlJqDxyx8TINUOVIDJHrbFMrqSx0or/view
+
+![Employee-tracker](https://user-images.githubusercontent.com/105468134/189469002-db6a4b78-5774-404f-bcc8-bd6af59a42da.gif)
